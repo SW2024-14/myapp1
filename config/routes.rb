@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.htm
-  resources :users 
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :users
+  
   root "users#index"
 
   # ユーザー登録
@@ -25,6 +25,5 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
   root "users#new"
-
-  resources :users  # Defines routes for users controller
+  
 end
