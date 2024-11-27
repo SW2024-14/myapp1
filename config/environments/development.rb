@@ -75,6 +75,7 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   
   config.hosts << "eaad172709dd4eb4afcc8859e957c338.vfs.cloud9.us-east-1.amazonaws.com"
+  config.hosts << "f352cc57b4a444e1bde4fa116e21149a.vfs.cloud9.us-east-1.amazonaws.com"
   
 
 end
