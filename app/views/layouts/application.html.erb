@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Myapp1</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<% if logged_in? %>
+  <p>ようこそ、<%= current_user.name %>さん！</p>
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "ログイン", login_path %>
+  <%= link_to "新規登録", signup_path %>
+<% end %>
