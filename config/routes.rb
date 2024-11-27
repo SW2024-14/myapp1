@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   root "users#index"
-end
+
   # ユーザー登録
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
