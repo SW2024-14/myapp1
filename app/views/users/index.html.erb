@@ -1,1 +1,22 @@
-#あいうえお
+<div class="users-container">
+  <h1>ユーザー一覧</h1>
+
+  <% if @users.present? %>
+    <div class="users-list">
+      <% @users.each do |e| %>
+        <div class="user-item">
+          <span>ユーザーID: <%= e.uid %></span>
+          <span>パスワード: <%= e.pass %></span>
+          <%= link_to '削除', user_path(e), data: { turbo_method: :delete }, class: 'delete-btn' %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>ユーザーが登録されていません</p>
+  <% end %>
+
+  <div class="action-buttons">
+    
+    <%= link_to "トップページへ戻る", root_path, class: 'btn' %>
+  </div>
+</div>
