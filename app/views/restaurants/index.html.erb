@@ -1,5 +1,16 @@
 <h1>レストラン一覧</h1>
 
+<div class="header-nav">
+  <%= link_to 'カートを見る', cart_path %>
+  <%= link_to 'ログアウト', logout_path %>
+</div>
+
+<% if current_user&.admin? %>
+  <div class="admin-menu">
+    <%= link_to '料理を追加', new_restaurant_path %>
+  </div>
+<% end %>
+
 <div class="restaurant-list">
   <% @restaurants.each do |restaurant| %>
     <div class="restaurant-item">
@@ -9,12 +20,6 @@
         <%= f.hidden_field :restaurant_id, value: restaurant.id %>
         <%= f.number_field :quantity, min: 1, value: 1 %>
         <%= f.submit 'カートに追加' %>
-      <% end %>
-      
-      <% if current_user&.admin? %>
-        <%= button_to '削除', restaurant_path(restaurant), 
-            method: :delete, 
-            data: { confirm: 'この料理を削除してもよろしいですか？' } %>
       <% end %>
     </div>
   <% end %>
