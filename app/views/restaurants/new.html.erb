@@ -1,0 +1,17 @@
+<h1>新しい料理を追加</h1>
+
+<%= form_for @restaurant do |form| %>
+  <div>
+    <%= form.label :name, '料理名' %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :price, '価格' %>
+    <%= form.number_field :price %>
+  </div>
+
+  <%= form.submit '追加' %>
+<% end %>
+
+<%= link_to 'レストラン一覧に戻る', restaurants_path %>

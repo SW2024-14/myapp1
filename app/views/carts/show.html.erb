@@ -1,0 +1,20 @@
+<h1>カートの内容</h1>
+
+<div class="cart-items">
+  <% @cart_items.each do |cart_item| %>
+    <div class="cart-item">
+      <h3><%= cart_item.restaurant.name %></h3>
+      <p>価格: <%= cart_item.restaurant.price %>円</p>
+      <p>数量: <%= cart_item.quantity || 1 %>個</p>
+      <p>小計: <%= cart_item.restaurant.price * (cart_item.quantity || 1) %>円</p>
+      <%= button_to 'カートから削除', remove_from_cart_path(cart_item), 
+          method: :delete %>
+    </div>
+  <% end %>
+</div>
+
+<div class="cart-total">
+  <h3>合計: <%= @cart_items.sum { |item| item.restaurant.price * (item.quantity || 1) } %>円</h3>
+</div>
+
+<%= link_to 'レストラン一覧に戻る', restaurants_path %>

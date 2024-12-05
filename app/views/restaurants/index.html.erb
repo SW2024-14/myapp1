@@ -1,14 +1,21 @@
 <h1>レストラン一覧</h1>
 
-<div class="header-nav">
-  <%= link_to 'ログアウト', logout_path, method: :delete, class: 'logout-link' %>
-</div>
-
 <div class="restaurant-list">
   <% @restaurants.each do |restaurant| %>
     <div class="restaurant-item">
       <h2><%= restaurant.name %></h2>
-      <p><%= restaurant.address %></p>
+      <p>価格: <%= restaurant.price %>円</p>
+      <%= form_with(url: add_item_cart_path, local: true) do |f| %>
+        <%= f.hidden_field :restaurant_id, value: restaurant.id %>
+        <%= f.number_field :quantity, min: 1, value: 1 %>
+        <%= f.submit 'カートに追加' %>
+      <% end %>
+      
+      <% if current_user&.admin? %>
+        <%= button_to '削除', restaurant_path(restaurant), 
+            method: :delete, 
+            data: { confirm: 'この料理を削除してもよろしいですか？' } %>
+      <% end %>
     </div>
   <% end %>
 </div>

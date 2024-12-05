@@ -1,4 +1,3 @@
-# app/controllers/restaurants_controller.rb
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
@@ -10,16 +9,28 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      redirect_to restaurants_path, notice: '登録しました'
+    if @restaurant.save!  # !を追加してエラーを確認
+      flash[:notice] = '料理を追加しました'
+      redirect_to restaurants_path
     else
+      flash.now[:alert] = '料理の追加に失敗しました'
       render :new
     end
+  end
+  
+  def destroy
+  if current_user&.admin?
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    redirect_to restaurants_path, notice: '料理を削除しました'
+  else
+    redirect_to restaurants_path, alert: '権限がありません'
+  end
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description)
+    params.require(:restaurant).permit(:name, :price)
   end
 end
