@@ -1,5 +1,9 @@
 <h1>レストラン一覧</h1>
 
+<div class="header-nav">
+  <%= link_to 'ログアウト', logout_path, method: :delete, class: 'logout-link' %>
+</div>
+
 <div class="restaurant-list">
   <% @restaurants.each do |restaurant| %>
     <div class="restaurant-item">

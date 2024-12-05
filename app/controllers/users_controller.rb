@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -6,7 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      session[:user_id] = @user.id
+      flash[:notice] = 'ユーザーが登録されました'
+      redirect_to users_path
     else
       render :new
     end
@@ -15,6 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  params.require(:user).permit(:uid, :password, :password_confirmation)
+    params.require(:user).permit(:uid, :email, :password, :password_confirmation)
   end
 end

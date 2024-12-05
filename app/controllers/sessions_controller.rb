@@ -1,22 +1,17 @@
+# app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
-    user = User.find_by(email: params[:email])
-    if user&.authenticate(params[:password])
+    user = User.find_by(email: params[:session][:email])
+    if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      flash[:success] = "ログインに成功しました"
-      redirect_to root_path
+      redirect_to restaurants_path, notice: 'ログインしました'
     else
-      flash.now[:danger] = "ログインに失敗しました"
+      flash.now[:alert] = 'メールアドレスまたはパスワードが間違っています'
       render :new
     end
   end
-
   def destroy
     session[:user_id] = nil
-    flash[:success] = "ログアウトしました"
-    redirect_to login_path
+    redirect_to root_path, notice: 'ログアウトしました'
   end
 end

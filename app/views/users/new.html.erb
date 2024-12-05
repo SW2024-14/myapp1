@@ -1,20 +1,24 @@
-<h1>新規登録</h1>
 
-<%= form_for @user do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
   <div>
-    <%= f.label :uid, "UID" %>
+    <%= f.label :uid %>
     <%= f.text_field :uid %>
+  </div>
+  
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %> 
   </div>
 
   <div>
-    <%= f.label :password, "パスワード" %>
+    <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
 
   <div>
-    <%= f.label :password_confirmation, "パスワード(確認)" %>
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= f.submit "登録" %>
+  <%= f.submit '登録' %>
 <% end %>
