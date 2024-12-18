@@ -1,15 +1,90 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* 全体のスタイル */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f4f4f9; /* 背景色 */
+}
+
+/* レイアウト全体 */
+.app-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ヘッダー */
+.site-header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* グラデーション背景 */
+    padding: 15px 10px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* シャドウ効果 */
+}
+
+.site-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ナビゲーション間の余白 */
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px; /* 角丸 */
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px); /* ホバー時の軽い浮遊効果 */
+    text-decoration: underline;
+}
+
+/* メインコンテンツ */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: white;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%; /* コンテンツ幅 */
+}
+
+/* 見出し */
+h1, h2 {
+    color: #6a11cb;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* フッター */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.site-footer a {
+    color: #ffdd57;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
