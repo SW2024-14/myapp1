@@ -20,4 +20,12 @@ class CartsController < ApplicationController
     @cart_item.destroy
     redirect_to cart_path, notice: '商品をカートから削除しました'
   end
+  
+  # app/controllers/carts_controller.rb
+  def purchase
+    # 購入処理の実装
+    flash[:notice] = "購入が完了しました"
+    redirect_to restaurants_path
+  end
+
 end
