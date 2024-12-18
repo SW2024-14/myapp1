@@ -26,17 +26,8 @@
     <footer class="site-footer">
       <p class="footer-text">© 2024 MyApp1 All Rights Reserved</p>
     </footer>
-  <body>
-    <header>
-      <nav>
-        <%= link_to "トップページ", root_path %>
-        <!--<%= link_to "ユーザー一覧", users_path %>-->
-        <%= link_to "新規登録", new_user_path %>
-        <%= link_to "ログイン", login_path %>
-      </nav>
-    </header>
-
-    <main class="main-content">
+    
+    <main>
       <%= yield %>
     </main>
 
