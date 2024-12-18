@@ -17,6 +17,15 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to users_path, notice: 'ユーザーを削除しました'
+    else
+      redirect_to users_path, alert: '削除に失敗しました'
+    end
+  end
 
   private
 

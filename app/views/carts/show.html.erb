@@ -15,7 +15,8 @@
 
 <div class="cart-total">
   <h3>合計: <%= @cart_items.sum { |item| item.restaurant.price * (item.quantity || 1) } %>円</h3>
-  <%= button_to '購入する', purchase_carts_path, method: :post, class: 'purchase-button' %>
+  <%= button_to '購入する', purchase_cart_path, method: :post, class: 'purchase-button', data: { confirm: '本当に購入しますか？' } %>
+
 </div>
 
 <%= link_to 'レストラン一覧に戻る', restaurants_path %>

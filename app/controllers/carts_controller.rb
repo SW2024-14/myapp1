@@ -23,9 +23,13 @@ class CartsController < ApplicationController
   
   # app/controllers/carts_controller.rb
   def purchase
-    # 購入処理の実装
-    flash[:notice] = "購入が完了しました"
-    redirect_to restaurants_path
+  @cart = current_cart
+  if @cart.cart_items.any?
+    # ここで実際の購入処理を実装します（例：注文の作成、在庫の更新など）
+    @cart.cart_items.destroy_all  # カート内のアイテムをクリア
+    redirect_to restaurants_path, notice: '購入が完了しました。ありがとうございます！'
+  else
+    redirect_to cart_path, alert: 'カートが空です。'
   end
-
+  end
 end
