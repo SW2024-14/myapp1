@@ -9,6 +9,23 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <body class="app-body">
+    <header class="site-header">
+      <nav class="site-navigation">
+        <%= link_to "トップページ", root_path, class: "nav-link" %>
+        <!--<%= link_to "ユーザー一覧", users_path, class: "nav-link" %>-->
+        <%= link_to "新規登録", new_user_path, class: "nav-link" %>
+        <%= link_to "ログイン", login_path, class: "nav-link" %>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-text">© 2024 MyApp1 All Rights Reserved</p>
+    </footer>
   <body>
     <header>
       <nav>
