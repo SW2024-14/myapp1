@@ -1,5 +1,7 @@
-class RemovePasswordDigestFromUsers < ActiveRecord::Migration[7.1]
+class RemovePasswordDigestFromUsers < ActiveRecord::Migration[6.1]
   def change
-    remove_column :users, :password_digest, :string
+    if table_exists?(:users) && column_exists?(:users, :password_digest)
+      remove_column :users, :password_digest, :string
+    end
   end
 end

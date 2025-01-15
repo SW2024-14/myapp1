@@ -1,6 +1,7 @@
-class AddUidToUsers < ActiveRecord::Migration[7.1]
+class AddUidToUsers < ActiveRecord::Migration[6.1]
   def change
-    add_column :users, :uid, :string
-    add_column :users, :pass, :string
+    if table_exists?(:users)
+      add_column :users, :uid, :string
+    end
   end
 end
